@@ -1,0 +1,97 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-alabaster: #f9f8f6;
+  --color-cream: #f2efe9;
+  --color-charcoal: #141413;
+  --color-ink: #1a1a1a;
+  --color-bronze-400: #c5a587;
+  --color-bronze-500: #8c6d53;
+  --color-bronze-600: #72563f;
+  --color-wine-700: #6e1423;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@keyframes levitate-organic {
+  0%, 100% {
+    transform: translate3d(0, 11px, 0) rotate(-0.65deg);
+  }
+  50% {
+    transform: translate3d(0, -12px, 0) rotate(0.75deg);
+  }
+}
+
+@keyframes levitate-subtle {
+  0%, 100% {
+    transform: translate3d(0, 6px, 0) rotate(-0.35deg);
+  }
+  50% {
+    transform: translate3d(0, -7px, 0) rotate(0.4deg);
+  }
+}
+
+@keyframes shadow-breathe {
+  0%, 100% {
+    transform: scale3d(1.06, 1, 1);
+    opacity: 0.44;
+  }
+  50% {
+    transform: scale3d(0.82, 0.88, 1);
+    opacity: 0.18;
+  }
+}
+
+.animate-levitate {
+  animation: levitate-organic 6.2s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-levitate-subtle {
+  animation: levitate-subtle 6.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-shadow-breathe {
+  animation: shadow-breathe 6.2s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-shadow-breathe-subtle {
+  animation: shadow-breathe 6.8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-levitate,
+  .animate-levitate-subtle,
+  .animate-shadow-breathe,
+  .animate-shadow-breathe-subtle {
+    animation: none !important;
+  }
+}
+

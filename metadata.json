@@ -1,0 +1,6 @@
+{
+  "name": "Multiforme — Mueblería de Autor",
+  "description": "Catálogo exclusivo de mobiliario residencial de alta gama, favoritos, carrito con control de stock, modo oscuro y gestión de inventario.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
