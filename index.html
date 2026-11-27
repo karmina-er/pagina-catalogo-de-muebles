@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="es">
   <head>
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content=" 0d6efd">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#0d6efd" />
     <title>Multiforme — Mueblería de Autor</title>
     <meta name="description" content="Catálogo exclusivo de mobiliario de diseño residencial. Piezas de autor en terciopelo rojo vino, nogal europeo, travertino y latón cepillado." />
     <meta property="og:title" content="Multiforme — Mueblería de Autor" />
@@ -27,21 +27,18 @@
         } catch (e) {}
       })();
     </script>
-    
   </head>
   <body class="bg-[#F9F8F6] text-[#1A1A1A] dark:bg-[#141413] dark:text-[#F4F1EC] antialiased selection:bg-[#8C6D53] selection:text-[#F9F8F6]">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js')
-          .then(reg => console.log('SW registrado:', reg.scope))
-          .catch(err => console.error('Error al registrar SW:', err));
-      });
-    }
-  </script>
-</body>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js')
+            .then(reg => console.log('SW registrado:', reg.scope))
+            .catch(err => console.error('Error al registrar SW:', err));
+        });
+      }
+    </script>
   </body>
 </html>
-

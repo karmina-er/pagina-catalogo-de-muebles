@@ -1,10 +1,10 @@
-const CACHE = 'catalogo-muebles-v1';
+const CACHE = 'catalogo-muebles-v2';
 const ARCHIVOS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/icons/icon-192.png',
-  '/icons/icon-512.png'
+  '/pagina-catalogo-de-muebles/',
+  '/pagina-catalogo-de-muebles/index.html',
+  '/pagina-catalogo-de-muebles/manifest.json',
+  '/pagina-catalogo-de-muebles/icons/icon-192.png',
+  '/pagina-catalogo-de-muebles/icons/icon-512.png'
 ];
 
 // Instalación: guarda los archivos en caché
