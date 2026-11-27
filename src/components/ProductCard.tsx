@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { ArrowUpRight, Heart, Plus } from 'lucide-react';
 import { formatUSD, useStore } from '../context/StoreContext';
 import { Producto } from '../types';
+import { appPath, assetPath } from '../utils/paths';
 
 interface ProductCardProps {
   producto: Producto;
@@ -40,7 +41,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       {/* Gallery Stage with generous breathing room & levitation */}
       <div className="relative bg-[#F2EFE9] dark:bg-[#22201D] px-6 pt-7 pb-5 overflow-hidden">
         <a
-          href={`/producto/${producto.id}`}
+          href={appPath(`/producto/${producto.id}`)}
           onClick={(e) => {
             e.preventDefault();
             navigate(`/producto/${producto.id}`);
@@ -56,7 +57,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                 <>
                   {/* Primary Gallery Shot */}
                   <img
-                    src={producto.imagen}
+                    src={assetPath(producto.imagen)}
                     alt={`${producto.nombre} — ${producto.material}`}
                     referrerPolicy="no-referrer"
                     onError={() => setImgError(true)}
@@ -64,7 +65,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                   />
                   {/* Secondary Craftsmanship Texture / Detail Reveal on Hover */}
                   <img
-                    src={producto.imagen}
+                    src={assetPath(producto.imagen)}
                     alt=""
                     aria-hidden="true"
                     referrerPolicy="no-referrer"
@@ -139,7 +140,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
           <h3 className="font-display text-2xl font-medium text-[#1A1A1A] dark:text-[#F4F1EC] leading-snug">
             <a
-              href={`/producto/${producto.id}`}
+              href={appPath(`/producto/${producto.id}`)}
               onClick={(e) => {
                 e.preventDefault();
                 navigate(`/producto/${producto.id}`);

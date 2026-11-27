@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { formatUSD, useStore } from '../context/StoreContext';
 import { ProductCard } from '../components/ProductCard';
 import { FloatingShowcase } from '../components/FloatingShowcase';
+import { appPath } from '../utils/paths';
 
 export const InicioPage: React.FC = () => {
   const { productos, navigate } = useStore();
@@ -170,7 +171,7 @@ export const InicioPage: React.FC = () => {
             </h2>
           </div>
           <a
-            href="/catalogo"
+            href={appPath('/catalogo')}
             onClick={(e) => {
               e.preventDefault();
               navigate('/catalogo');

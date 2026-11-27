@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { Heart, Menu, Moon, ShoppingBag, Sun, X } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
+import { appPath } from '../utils/paths';
 
 export const Navbar: React.FC = () => {
   const { route, navigate, totalCartCount, favoritos, theme, toggleTheme } = useStore();
@@ -68,7 +69,7 @@ export const Navbar: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-8 h-16 flex items-center justify-between gap-8">
           {/* Zone 1: Single-element Brand Wordmark */}
           <a
-            href="/"
+            href={appPath('/')}
             onClick={(e) => handleNav(e, '/')}
             className="font-display text-2xl sm:text-[28px] font-semibold tracking-tight text-[#1A1A1A] dark:text-[#F4F1EC] whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C6D53]"
           >
@@ -83,7 +84,7 @@ export const Navbar: React.FC = () => {
             {navLinks.map((link) => (
               <a
                 key={link.label}
-                href={link.path}
+                href={appPath(link.path)}
                 onClick={(e) => handleNav(e, link.path)}
                 className={`relative py-1 whitespace-nowrap shrink-0 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C6D53] ${
                   link.active
@@ -153,7 +154,7 @@ export const Navbar: React.FC = () => {
               {navLinks.map((link) => (
                 <a
                   key={link.label}
-                  href={link.path}
+                  href={appPath(link.path)}
                   onClick={(e) => handleNav(e, link.path)}
                   className={`block px-3 py-2.5 text-sm font-medium rounded-md ${
                     link.active

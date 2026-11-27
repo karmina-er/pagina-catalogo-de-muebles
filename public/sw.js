@@ -1,33 +1,42 @@
-const CACHE = 'catalogo-muebles-v2';
+const CACHE_NAME = 'multiforme-v3';
+const BASE = '/pagina-catalogo-de-muebles/';
 const ARCHIVOS = [
-  '/pagina-catalogo-de-muebles/',
-  '/pagina-catalogo-de-muebles/index.html',
-  '/pagina-catalogo-de-muebles/manifest.json',
-  '/pagina-catalogo-de-muebles/icons/icon-192.png',
-  '/pagina-catalogo-de-muebles/icons/icon-512.png'
+  BASE,
+  BASE + 'index.html',
+  BASE + 'manifest.json',
+  BASE + 'icons/icon-192.png',
+  BASE + 'icons/icon-512.png'
 ];
 
-// Instalación: guarda los archivos en caché
-self.addEventListener('install', e => {
-  e.waitUntil(
-    caches.open(CACHE).then(c => c.addAll(ARCHIVOS))
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(ARCHIVOS))
+      .then(() => self.skipWaiting())
   );
-  self.skipWaiting();
 });
 
-// Activación: borra cachés antiguas
-self.addEventListener('activate', e => {
-  e.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
-    )
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys()
+      .then(keys => Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))))
+      .then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
-// Peticiones: responde desde caché y, si no hay, desde la red
-self.addEventListener('fetch', e => {
-  e.respondWith(
-    caches.match(e.request).then(res => res || fetch(e.request))
+self.addEventListener('fetch', event => {
+  const requestUrl = new URL(event.request.url);
+  const baseUrl = new URL(BASE, self.location.origin).href;
+  if (!requestUrl.href.startsWith(baseUrl)) return;
+
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request).catch(() => caches.match(BASE + 'index.html'))
+    );
+    return;
+  }
+
+  event.respondWith(
+    caches.match(event.request).then(response => response || fetch(event.request))
   );
 });

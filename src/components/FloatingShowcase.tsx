@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from 'motion/react';
+import { assetPath } from '../utils/paths';
 
 interface FloatingShowcaseProps {
   src: string;
@@ -91,7 +92,7 @@ export const FloatingShowcase: React.FC<FloatingShowcaseProps> = ({
         <div className="animate-levitate">
           <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-[0_24px_48px_-18px_rgba(26,26,26,0.22)] dark:shadow-[0_28px_56px_-18px_rgba(0,0,0,0.75)] ring-1 ring-[#1A1A1A]/5 dark:ring-white/10">
             <img
-              src={src}
+              src={assetPath(src)}
               alt={alt}
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"

@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { formatUSD, useStore } from '../context/StoreContext';
 import { CategoriaMueble, Producto } from '../types';
+import { assetPath } from '../utils/paths';
 
 const CATEGORIAS: CategoriaMueble[] = [
   'Sala',
@@ -25,14 +26,14 @@ const CATEGORIAS: CategoriaMueble[] = [
 ];
 
 const GALERIA_ESTUDIO = [
-  { label: 'Sofá Modular Valenza', path: '/src/assets/images/sofa_modular_valenza_1795138657480.jpg' },
-  { label: 'Mesa de Comedor Aurelia', path: '/src/assets/images/mesa_comedor_aurelia_1795138656800.jpg' },
-  { label: 'Butaca Borghese', path: '/src/assets/images/butaca_borghese_1795138658041.jpg' },
-  { label: 'Aparador Palazzo', path: '/src/assets/images/aparador_palazzo_1795138656345.jpg' },
-  { label: 'Lámpara de Pie Solis', path: '/src/assets/images/lampara_pie_solis_1795138657171.jpg' },
-  { label: 'Diván Medicea', path: '/src/assets/images/divan_medicea_1795138657341.jpg' },
-  { label: 'Consola Bellagio', path: '/src/assets/images/consola_bellagio_1795138656611.jpg' },
-  { label: 'Cama Imperial Verona', path: '/src/assets/images/cama_imperial_verona_1795138657622.jpg' },
+  { label: 'Sofá Modular Valenza', path: 'src/assets/images/sofa_modular_valenza_1795138657480.jpg' },
+  { label: 'Mesa de Comedor Aurelia', path: 'src/assets/images/mesa_comedor_aurelia_1795138656800.jpg' },
+  { label: 'Butaca Borghese', path: 'src/assets/images/butaca_borghese_1795138658041.jpg' },
+  { label: 'Aparador Palazzo', path: 'src/assets/images/aparador_palazzo_1795138656345.jpg' },
+  { label: 'Lámpara de Pie Solis', path: 'src/assets/images/lampara_pie_solis_1795138657171.jpg' },
+  { label: 'Diván Medicea', path: 'src/assets/images/divan_medicea_1795138657341.jpg' },
+  { label: 'Consola Bellagio', path: 'src/assets/images/consola_bellagio_1795138656611.jpg' },
+  { label: 'Cama Imperial Verona', path: 'src/assets/images/cama_imperial_verona_1795138657622.jpg' },
 ];
 
 interface FormState {
@@ -388,7 +389,7 @@ export const AdminPage: React.FC = () => {
               >
                 <div className="flex items-center gap-4 min-w-0">
                   <img
-                    src={p.imagen}
+                    src={assetPath(p.imagen)}
                     alt={p.nombre}
                     referrerPolicy="no-referrer"
                     className="w-20 h-14 object-cover rounded-md bg-[#F2EFE9] dark:bg-[#22201D] border border-[#E6E0D6] dark:border-[#2A2824] shrink-0"
@@ -671,7 +672,7 @@ export const AdminPage: React.FC = () => {
 
                   <div className="flex items-center gap-4">
                     <img
-                      src={form.imagen}
+                      src={assetPath(form.imagen)}
                       alt="Vista previa"
                       referrerPolicy="no-referrer"
                       className="w-24 h-18 object-cover rounded-md border border-[#DFD8CE] dark:border-[#2E2C28]"

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, CheckCircle2, Heart, Minus, Plus, ShoppingBag, Trash2 } from 'lucide-react';
 import { formatUSD, useStore } from '../context/StoreContext';
+import { appPath, assetPath } from '../utils/paths';
 import { PedidoConfirmado } from '../types';
 import { ProductCard } from '../components/ProductCard';
 
@@ -274,7 +275,7 @@ export const CarritoPage: React.FC<CarritoPageProps> = ({ initialTab }) => {
                   className="py-6 flex flex-col sm:flex-row sm:items-center gap-5"
                 >
                   <a
-                    href={`/producto/${producto.id}`}
+                    href={appPath(`/producto/${producto.id}`)}
                     onClick={(e) => {
                       e.preventDefault();
                       navigate(`/producto/${producto.id}`);
@@ -282,7 +283,7 @@ export const CarritoPage: React.FC<CarritoPageProps> = ({ initialTab }) => {
                     className="w-full sm:w-36 aspect-[4/3] bg-[#F2EFE9] dark:bg-[#1B1A18] border border-[#E6E0D6] dark:border-[#2A2824] rounded-md overflow-hidden shrink-0"
                   >
                     <img
-                      src={producto.imagen}
+                      src={assetPath(producto.imagen)}
                       alt={producto.nombre}
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover"
@@ -295,7 +296,7 @@ export const CarritoPage: React.FC<CarritoPageProps> = ({ initialTab }) => {
                     </div>
                     <h3 className="font-display text-2xl font-medium text-[#1A1A1A] dark:text-[#F4F1EC]">
                       <a
-                        href={`/producto/${producto.id}`}
+                        href={appPath(`/producto/${producto.id}`)}
                         onClick={(e) => {
                           e.preventDefault();
                           navigate(`/producto/${producto.id}`);

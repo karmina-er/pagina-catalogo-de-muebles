@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Lock, Moon, Sun } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
+import { appPath } from '../utils/paths';
 
 export const Footer: React.FC = () => {
   const { navigate, theme, toggleTheme, route } = useStore();
@@ -49,27 +50,27 @@ export const Footer: React.FC = () => {
           </h4>
           <ul className="space-y-2.5 text-sm text-[#5C554E] dark:text-[#A8A197]">
             <li>
-              <a href="/catalogo" onClick={(e) => handleLink(e, '/catalogo')} className="hover:text-[#8C6D53] dark:hover:text-[#C5A587] transition-colors">
+              <a href={appPath('/catalogo')} onClick={(e) => handleLink(e, '/catalogo')} className="hover:text-[#8C6D53] dark:hover:text-[#C5A587] transition-colors">
                 Catálogo completo
               </a>
             </li>
             <li>
-              <a href="/catalogo?categoria=Sala" onClick={(e) => handleLink(e, '/catalogo?categoria=Sala')} className="hover:text-[#8C6D53] dark:hover:text-[#C5A587] transition-colors">
+              <a href={appPath('/catalogo?categoria=Sala')} onClick={(e) => handleLink(e, '/catalogo?categoria=Sala')} className="hover:text-[#8C6D53] dark:hover:text-[#C5A587] transition-colors">
                 Sala y estar
               </a>
             </li>
             <li>
-              <a href="/catalogo?categoria=Comedor" onClick={(e) => handleLink(e, '/catalogo?categoria=Comedor')} className="hover:text-[#8C6D53] dark:hover:text-[#C5A587] transition-colors">
+              <a href={appPath('/catalogo?categoria=Comedor')} onClick={(e) => handleLink(e, '/catalogo?categoria=Comedor')} className="hover:text-[#8C6D53] dark:hover:text-[#C5A587] transition-colors">
                 Comedor
               </a>
             </li>
             <li>
-              <a href="/catalogo?categoria=Dormitorio" onClick={(e) => handleLink(e, '/catalogo?categoria=Dormitorio')} className="hover:text-[#8C6D53] dark:hover:text-[#C5A587] transition-colors">
+              <a href={appPath('/catalogo?categoria=Dormitorio')} onClick={(e) => handleLink(e, '/catalogo?categoria=Dormitorio')} className="hover:text-[#8C6D53] dark:hover:text-[#C5A587] transition-colors">
                 Dormitorio
               </a>
             </li>
             <li>
-              <a href="/catalogo?categoria=Iluminación" onClick={(e) => handleLink(e, '/catalogo?categoria=Iluminación')} className="hover:text-[#8C6D53] dark:hover:text-[#C5A587] transition-colors">
+              <a href={appPath('/catalogo?categoria=Iluminación')} onClick={(e) => handleLink(e, '/catalogo?categoria=Iluminación')} className="hover:text-[#8C6D53] dark:hover:text-[#C5A587] transition-colors">
                 Iluminación
               </a>
             </li>
@@ -82,17 +83,17 @@ export const Footer: React.FC = () => {
           </h4>
           <ul className="space-y-2.5 text-sm text-[#5C554E] dark:text-[#A8A197]">
             <li>
-              <a href="/contacto" onClick={(e) => handleLink(e, '/contacto')} className="hover:text-[#8C6D53] dark:hover:text-[#C5A587] transition-colors">
+              <a href={appPath('/contacto')} onClick={(e) => handleLink(e, '/contacto')} className="hover:text-[#8C6D53] dark:hover:text-[#C5A587] transition-colors">
                 Cita privada en showroom
               </a>
             </li>
             <li>
-              <a href="/carrito" onClick={(e) => handleLink(e, '/carrito')} className="hover:text-[#8C6D53] dark:hover:text-[#C5A587] transition-colors">
+              <a href={appPath('/carrito')} onClick={(e) => handleLink(e, '/carrito')} className="hover:text-[#8C6D53] dark:hover:text-[#C5A587] transition-colors">
                 Bolsa de compras
               </a>
             </li>
             <li>
-              <a href="/carrito?tab=favoritos" onClick={(e) => handleLink(e, '/carrito?tab=favoritos')} className="hover:text-[#8C6D53] dark:hover:text-[#C5A587] transition-colors">
+              <a href={appPath('/carrito?tab=favoritos')} onClick={(e) => handleLink(e, '/carrito?tab=favoritos')} className="hover:text-[#8C6D53] dark:hover:text-[#C5A587] transition-colors">
                 Lista de favoritos
               </a>
             </li>

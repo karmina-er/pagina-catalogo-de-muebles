@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import initialProductos from '../data/productos.json';
 import { AppRoute, CartItem, PedidoConfirmado, Producto } from '../types';
+import { appPath } from '../utils/paths';
 
 const STORAGE_KEYS = {
   productos: 'multiforme_productos_v2',
@@ -48,7 +49,14 @@ interface StoreContextValue {
 const StoreContext = createContext<StoreContextValue | undefined>(undefined);
 
 function parseRouteFromLocation(): AppRoute {
-  const pathname = window.location.pathname.toLowerCase();
+  const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+  const locationPath = window.location.pathname.toLowerCase();
+  const pathname =
+    locationPath === basePath
+      ? '/'
+      : locationPath.startsWith(`${basePath}/`)
+      ? locationPath.slice(basePath.length)
+      : locationPath;
   const params = new URLSearchParams(window.location.search);
 
   if (pathname === '/' || pathname === '/index.html') {
@@ -183,11 +191,12 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   }, []);
 
   const navigate = useCallback((path: string) => {
-    if (window.location.pathname + window.location.search === path) {
+    const destination = appPath(path);
+    if (window.location.pathname + window.location.search === destination) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
-    window.history.pushState({}, '', path);
+    window.history.pushState({}, '', destination);
     setRoute(parseRouteFromLocation());
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);

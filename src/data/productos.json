@@ -12,7 +12,7 @@
     "peso": "92 kg",
     "origen": "Milán, Italia",
     "destacado": true,
-    "imagen": "/src/assets/images/sofa_modular_valenza_1795138657480.jpg",
+    "imagen": "src/assets/images/sofa_modular_valenza_1795138657480.jpg",
     "descripcion": "Silueta curvilínea de perfil bajo tapizada en terciopelo de algodón italiano rojo vino, acanalado artesanalmente a mano sobre un zócalo continuo en latón cepillado."
   },
   {
@@ -28,7 +28,7 @@
     "peso": "165 kg",
     "origen": "Verona, Italia",
     "destacado": true,
-    "imagen": "/src/assets/images/mesa_comedor_aurelia_1795138656800.jpg",
+    "imagen": "src/assets/images/mesa_comedor_aurelia_1795138656800.jpg",
     "descripcion": "Sobre ovalado de piedra travertino romana apomazada sostenido por dos pedestales escultóricos de nogal europeo estriado con remates en latón antiguo."
   },
   {
@@ -44,7 +44,7 @@
     "peso": "28 kg",
     "origen": "Madrid, España",
     "destacado": true,
-    "imagen": "/src/assets/images/butaca_borghese_1795138658041.jpg",
+    "imagen": "src/assets/images/butaca_borghese_1795138658041.jpg",
     "descripcion": "Estructura geométrica tubular bañada en oro satinado con respaldo flotante en piel de silla de montar y cojinería capitoné en terciopelo burdeos."
   },
   {
@@ -60,7 +60,7 @@
     "peso": "110 kg",
     "origen": "Oporto, Portugal",
     "destacado": true,
-    "imagen": "/src/assets/images/aparador_palazzo_1795138656345.jpg",
+    "imagen": "src/assets/images/aparador_palazzo_1795138656345.jpg",
     "descripcion": "Credenza arquitectónica con cuatro puertas acanaladas en nogal europeo ahumado, cubierta embutida de travertino natural y tiradores lineales de latón macizo."
   },
   {
@@ -76,7 +76,7 @@
     "peso": "22 kg",
     "origen": "Barcelona, España",
     "destacado": true,
-    "imagen": "/src/assets/images/lampara_pie_solis_1795138657171.jpg",
+    "imagen": "src/assets/images/lampara_pie_solis_1795138657171.jpg",
     "descripcion": "Difusor esférico en alabastro español translúcido suspendido en un aro de latón bruñido sobre base cilíndrica de mármol Nero Marquina con detalle lacado en vino."
   },
   {
@@ -92,7 +92,7 @@
     "peso": "58 kg",
     "origen": "Milán, Italia",
     "destacado": true,
-    "imagen": "/src/assets/images/divan_medicea_1795138657341.jpg",
+    "imagen": "src/assets/images/divan_medicea_1795138657341.jpg",
     "descripcion": "Diván asimétrico de líneas orgánicas tapizado en tejido bouclé francés color marfil con vivo contrastante rojo vino y rulo cilíndrico en terciopelo de seda."
   },
   {
@@ -108,7 +108,7 @@
     "peso": "74 kg",
     "origen": "Florencia, Italia",
     "destacado": false,
-    "imagen": "/src/assets/images/consola_bellagio_1795138656611.jpg",
+    "imagen": "src/assets/images/consola_bellagio_1795138656611.jpg",
     "descripcion": "Consola de recibidor o estudio con arcada estructural lacada en rojo vino profundo, fileteado de latón dorado y tablero superior de mármol Nero Marquina."
   },
   {
@@ -124,7 +124,7 @@
     "peso": "148 kg",
     "origen": "Ciudad de México",
     "destacado": false,
-    "imagen": "/src/assets/images/cama_imperial_verona_1795138657622.jpg",
+    "imagen": "src/assets/images/cama_imperial_verona_1795138657622.jpg",
     "descripcion": "Cabecero monumental acanalado de piso a muro en terciopelo rojo vino enmarcado en latón cepillado, acompañado de plataforma flotante en nogal americano."
   }
 ]

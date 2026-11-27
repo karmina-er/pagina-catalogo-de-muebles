@@ -4,6 +4,7 @@ import { ArrowLeft, CheckCircle2, Heart, Minus, Plus, Ruler, ShieldCheck, Truck,
 import { formatUSD, useStore } from '../context/StoreContext';
 import { ProductCard } from '../components/ProductCard';
 import { FloatingShowcase } from '../components/FloatingShowcase';
+import { appPath } from '../utils/paths';
 
 interface ProductoPageProps {
   id: string;
@@ -58,7 +59,7 @@ export const ProductoPage: React.FC<ProductoPageProps> = ({ id }) => {
       {/* Breadcrumb */}
       <nav aria-label="Ruta de navegación" className="flex items-center gap-2 text-xs text-[#6F675E] dark:text-[#A8A197] mb-10">
         <a
-          href="/"
+          href={appPath('/')}
           onClick={(e) => {
             e.preventDefault();
             navigate('/');
@@ -69,7 +70,7 @@ export const ProductoPage: React.FC<ProductoPageProps> = ({ id }) => {
         </a>
         <span aria-hidden="true">/</span>
         <a
-          href="/catalogo"
+          href={appPath('/catalogo')}
           onClick={(e) => {
             e.preventDefault();
             navigate('/catalogo');
@@ -80,7 +81,7 @@ export const ProductoPage: React.FC<ProductoPageProps> = ({ id }) => {
         </a>
         <span aria-hidden="true">/</span>
         <a
-          href={`/catalogo?categoria=${encodeURIComponent(producto.categoria)}`}
+          href={appPath(`/catalogo?categoria=${encodeURIComponent(producto.categoria)}`)}
           onClick={(e) => {
             e.preventDefault();
             navigate(`/catalogo?categoria=${encodeURIComponent(producto.categoria)}`);
