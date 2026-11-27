@@ -1,9 +1,6 @@
 const BASE = '/pagina-catalogo-de-muebles/';
-const CACHE_NAME = 'multiforme-v4';
-const PRECACHE_URLS = [
-  BASE,
-  BASE + 'index.html',
-  BASE + 'manifest.json',
+const CACHE_NAME = 'multiforme-v5';
+const ICONS = [
   BASE + 'icons/icon-192.png',
   BASE + 'icons/icon-512.png',
 ];
@@ -13,7 +10,7 @@ self.addEventListener('install', event => {
     Promise.allSettled([
       self.skipWaiting(),
       caches.open(CACHE_NAME).then(cache =>
-        Promise.allSettled(PRECACHE_URLS.map(url => cache.add(url)))
+        Promise.allSettled(ICONS.map(url => cache.add(url)))
       ),
     ])
   );
@@ -37,78 +34,60 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   const request = event.request;
   const requestUrl = new URL(request.url);
+  const pathname = requestUrl.pathname;
 
   if (
     request.method !== 'GET' ||
     requestUrl.origin !== self.location.origin ||
-    !requestUrl.pathname.startsWith(BASE)
+    !pathname.startsWith(BASE) ||
+    pathname.startsWith(BASE + 'assets/') ||
+    pathname === BASE + 'manifest.json'
   ) {
     return;
   }
 
-  const handleRequest = async () => {
-    try {
-      if (request.mode === 'navigate') {
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      (async () => {
         try {
-          const response = await fetch(request);
-          if (response.ok) return response;
+          return await fetch(request);
         } catch {
-          // Use the cached app shell when the network is unavailable.
+          try {
+            return (await caches.match(BASE + 'index.html')) || Response.error();
+          } catch {
+            return Response.error();
+          }
         }
+      })()
+    );
+    return;
+  }
 
-        return (await caches.match(BASE + 'index.html')) || new Response(
-          'Service Unavailable',
-          { status: 503, statusText: 'Service Unavailable' }
-        );
-      }
-
-      if (requestUrl.pathname.startsWith(BASE + 'assets/')) {
+  if (ICONS.includes(pathname)) {
+    event.respondWith(
+      (async () => {
         try {
+          const cachedResponse = await caches.match(request);
+          if (cachedResponse) return cachedResponse;
+
           const response = await fetch(request);
           if (response.ok) {
             try {
               const cache = await caches.open(CACHE_NAME);
               await cache.put(request, response.clone());
             } catch {
-              // Return the network response even if it cannot be cached.
+              // Keep serving the network response if caching fails.
             }
-            return response;
           }
+          return response;
         } catch {
-          // Try the previously cached version of this hashed asset.
+          try {
+            return (await caches.match(request)) || Response.error();
+          } catch {
+            return Response.error();
+          }
         }
-
-        return (await caches.match(request)) || new Response(
-          'Service Unavailable',
-          { status: 503, statusText: 'Service Unavailable' }
-        );
-      }
-
-      let cachedResponse;
-      try {
-        cachedResponse = await caches.match(request);
-      } catch {
-        // Fall back to the network if the cache cannot be read.
-      }
-      if (cachedResponse) return cachedResponse;
-
-      const response = await fetch(request);
-      if (response.ok) {
-        try {
-          const cache = await caches.open(CACHE_NAME);
-          await cache.put(request, response.clone());
-        } catch {
-          // Return the network response even if it cannot be cached.
-        }
-      }
-      return response;
-    } catch {
-      return new Response('Service Unavailable', {
-        status: 503,
-        statusText: 'Service Unavailable',
-      });
-    }
-  };
-
-  event.respondWith(handleRequest());
+      })()
+    );
+  }
 });
